@@ -1,14 +1,22 @@
+"use client";
+
 import type { ElementType } from "react";
 import { Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/brand-icons";
 import { profile } from "@/data/profile";
+import { ui } from "@/data/ui";
+import { useLanguage } from "@/components/language-provider";
 
 export function Footer() {
+  const { lang } = useLanguage();
+  const p = profile[lang];
+  const t = ui[lang];
+
   const links = [
-    { icon: Mail as ElementType, href: `mailto:${profile.email}`, label: "Email", external: false },
-    { icon: GithubIcon as ElementType, href: profile.github, label: "GitHub", external: true },
-    ...(profile.linkedin
-      ? [{ icon: LinkedinIcon as ElementType, href: profile.linkedin, label: "LinkedIn", external: true }]
+    { icon: Mail as ElementType, href: `mailto:${p.email}`, label: "Email", external: false },
+    { icon: GithubIcon as ElementType, href: p.github, label: "GitHub", external: true },
+    ...(p.linkedin
+      ? [{ icon: LinkedinIcon as ElementType, href: p.linkedin, label: "LinkedIn", external: true }]
       : []),
   ];
 
@@ -17,18 +25,18 @@ export function Footer() {
       <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-6 px-6 py-10 sm:flex-row">
         <div className="text-center sm:text-left">
           <p className="font-mono text-sm font-semibold text-foreground">
-            {profile.name.split(" ")[0]}
+            {p.name.split(" ")[0]}
             <span className="text-accent-strong">.dev</span>
           </p>
           <p className="mt-1 text-xs text-subtle">
-            Construido con Next.js y Tailwind CSS ·{" "}
+            {t.footer.builtWith} ·{" "}
             <a
               href="https://github.com/jsalas607/portfolio"
               target="_blank"
               rel="noopener noreferrer"
               className="underline underline-offset-2 transition-colors hover:text-accent-strong"
             >
-              código
+              {t.footer.code}
             </a>{" "}
             · © {new Date().getFullYear()}
           </p>

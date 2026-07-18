@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import {
   ArrowUpRight,
@@ -13,6 +15,8 @@ import {
 } from "lucide-react";
 import { GithubIcon } from "@/components/brand-icons";
 import type { Project } from "@/data/projects";
+import { ui } from "@/data/ui";
+import { useLanguage } from "@/components/language-provider";
 import { Badge } from "@/components/ui/badge";
 
 const iconByCategory: Record<string, LucideIcon> = {
@@ -22,7 +26,10 @@ const iconByCategory: Record<string, LucideIcon> = {
 };
 
 export function ProjectCard({ project }: { project: Project }) {
+  const { lang } = useLanguage();
+  const t = ui[lang];
   const Icon = iconByCategory[project.category] ?? Code2;
+  const categoryLabel = t.categories[project.category] ?? project.category;
 
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/5">
@@ -31,7 +38,7 @@ export function ProjectCard({ project }: { project: Project }) {
         {project.image ? (
           <Image
             src={project.image}
-            alt={`Vista de ${project.title}`}
+            alt={project.title}
             fill
             sizes="(max-width: 768px) 100vw, 400px"
             className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -44,13 +51,13 @@ export function ProjectCard({ project }: { project: Project }) {
         )}
         {project.featured ? (
           <span className="absolute left-3 top-3 rounded-md border border-accent/25 bg-background/70 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-accent-strong backdrop-blur">
-            Destacado
+            {t.project.featured}
           </span>
         ) : null}
       </div>
 
       <div className="flex flex-1 flex-col p-6">
-        <span className="font-mono text-xs uppercase tracking-wider text-subtle">{project.category}</span>
+        <span className="font-mono text-xs uppercase tracking-wider text-subtle">{categoryLabel}</span>
         <h3 className="mt-2 text-lg font-semibold tracking-tight text-foreground transition-colors group-hover:text-accent-strong">
           {project.title}
         </h3>
@@ -64,15 +71,15 @@ export function ProjectCard({ project }: { project: Project }) {
           <div className="mt-5 rounded-lg border border-accent/25 bg-accent/5 p-3.5">
             <p className="flex items-center gap-1.5 text-xs font-medium text-accent-strong">
               <KeyRound className="size-3.5" />
-              Probala vos mismo
+              {t.project.tryItYourself}
             </p>
             <dl className="mt-2 flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs">
               <div className="flex gap-1.5">
-                <dt className="text-subtle">usuario:</dt>
+                <dt className="text-subtle">{t.project.user}:</dt>
                 <dd className="text-foreground">{project.demoAccess.username}</dd>
               </div>
               <div className="flex gap-1.5">
-                <dt className="text-subtle">clave:</dt>
+                <dt className="text-subtle">{t.project.password}:</dt>
                 <dd className="text-foreground">{project.demoAccess.password}</dd>
               </div>
             </dl>
@@ -84,9 +91,9 @@ export function ProjectCard({ project }: { project: Project }) {
         ) : null}
 
         <ul className="mt-5 flex flex-wrap gap-2">
-          {project.stack.map((t) => (
-            <li key={t}>
-              <Badge>{t}</Badge>
+          {project.stack.map((s) => (
+            <li key={s}>
+              <Badge>{s}</Badge>
             </li>
           ))}
         </ul>
@@ -96,7 +103,7 @@ export function ProjectCard({ project }: { project: Project }) {
             href={project.play}
             className="mt-6 inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-accent-fg transition-all hover:brightness-110 active:scale-[0.98]"
           >
-            <Play className="size-4" /> Jugar ahora
+            <Play className="size-4" /> {t.project.playNow}
           </a>
         ) : null}
 
@@ -108,10 +115,10 @@ export function ProjectCard({ project }: { project: Project }) {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-colors hover:text-accent-strong"
             >
-              <GithubIcon className="size-4" /> Código
+              <GithubIcon className="size-4" /> {t.project.code}
             </a>
           ) : (
-            <span className="inline-flex items-center gap-1.5 text-sm text-subtle">Código: próximamente</span>
+            <span className="inline-flex items-center gap-1.5 text-sm text-subtle">{t.project.codeSoon}</span>
           )}
           {project.demo ? (
             <a
@@ -120,7 +127,7 @@ export function ProjectCard({ project }: { project: Project }) {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-colors hover:text-accent-strong"
             >
-              <ArrowUpRight className="size-4" /> Demo
+              <ArrowUpRight className="size-4" /> {t.project.demo}
             </a>
           ) : null}
           {project.apk ? (
@@ -129,7 +136,7 @@ export function ProjectCard({ project }: { project: Project }) {
               download
               className="inline-flex items-center gap-1.5 text-sm font-medium text-accent-strong transition-colors hover:brightness-110"
             >
-              <Download className="size-4" /> Descargar APK
+              <Download className="size-4" /> {t.project.downloadApk}
             </a>
           ) : null}
         </div>

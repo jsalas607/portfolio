@@ -3,18 +3,23 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { profile } from "@/data/profile";
+import { ui } from "@/data/ui";
+import { useLanguage } from "@/components/language-provider";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { LanguageToggle } from "@/components/language-toggle";
 import { cn } from "@/lib/utils";
 
 const links = [
-  { href: "#inicio", label: "Inicio" },
-  { href: "#sobre", label: "Sobre mí" },
-  { href: "#tecnologias", label: "Tecnologías" },
-  { href: "#proyectos", label: "Proyectos" },
-  { href: "#contacto", label: "Contacto" },
-];
+  { href: "#inicio", key: "home" },
+  { href: "#sobre", key: "about" },
+  { href: "#tecnologias", key: "tech" },
+  { href: "#proyectos", key: "projects" },
+  { href: "#contacto", key: "contact" },
+] as const;
 
 export function Navbar() {
+  const { lang } = useLanguage();
+  const t = ui[lang];
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -34,7 +39,7 @@ export function Navbar() {
     >
       <nav aria-label="Navegación principal" className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
         <a href="#inicio" className="font-mono text-sm font-semibold tracking-tight text-foreground">
-          {profile.name.split(" ")[0]}
+          {profile[lang].name.split(" ")[0]}
           <span className="text-accent-strong">.dev</span>
         </a>
 
@@ -45,21 +50,23 @@ export function Navbar() {
               href={link.href}
               className="rounded-md px-3 py-2 text-sm text-muted transition-colors hover:text-foreground"
             >
-              {link.label}
+              {t.nav[link.key]}
             </a>
           ))}
           <span className="mx-2 h-5 w-px bg-border" aria-hidden />
+          <LanguageToggle />
           <ThemeToggle />
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
+          <LanguageToggle />
           <ThemeToggle />
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="menu-movil"
-            aria-label={open ? "Cerrar menú" : "Abrir menú"}
+            aria-label={open ? t.menuClose : t.menuOpen}
             className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border text-muted transition-colors hover:text-foreground"
           >
             {open ? <X className="size-4" /> : <Menu className="size-4" />}
@@ -76,7 +83,7 @@ export function Navbar() {
                 onClick={() => setOpen(false)}
                 className="block py-3 text-sm text-muted transition-colors hover:text-foreground"
               >
-                {link.label}
+                {t.nav[link.key]}
               </a>
             </li>
           ))}

@@ -1,18 +1,25 @@
+"use client";
+
 import { experience } from "@/data/stack";
+import { ui } from "@/data/ui";
+import { useLanguage } from "@/components/language-provider";
 import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/motion/reveal";
 
 export function Experience() {
+  const { lang } = useLanguage();
+  const t = ui[lang];
+
   return (
     <section id="experiencia" className="mx-auto max-w-5xl scroll-mt-20 px-6 py-24">
       <SectionHeading
-        eyebrow="Trayectoria"
-        title="Experiencia y proyectos"
-        description="Mi experiencia viene de trabajo freelance y proyectos propios, construidos de principio a fin."
+        eyebrow={t.experience.eyebrow}
+        title={t.experience.title}
+        description={t.experience.description}
       />
 
       <ol className="relative border-l border-border">
-        {experience.map((item, i) => (
+        {experience[lang].map((item, i) => (
           <li key={item.title} className="relative mb-10 pl-6 last:mb-0">
             {/* Punto del timeline: hijo directo del <li> (no del elemento animado),
                 anclado a la línea del borde izquierdo. */}
@@ -29,10 +36,10 @@ export function Experience() {
                 {item.context}
               </p>
               <ul className="mt-3 space-y-1.5">
-                {item.points.map((p) => (
-                  <li key={p} className="flex gap-2 text-sm leading-relaxed text-muted">
+                {item.points.map((point) => (
+                  <li key={point} className="flex gap-2 text-sm leading-relaxed text-muted">
                     <span aria-hidden className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent/60" />
-                    {p}
+                    {point}
                   </li>
                 ))}
               </ul>
