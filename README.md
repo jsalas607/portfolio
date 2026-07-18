@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Portafolio — John Salas
 
-## Getting Started
+Portafolio personal de **John Salas**, desarrollador full-stack junior.
+Sitio de una sola página, responsive, con modo claro/oscuro y animaciones sutiles.
 
-First, run the development server:
+### 🔗 En vivo: **[johnsalas.online](https://johnsalas.online)**
+
+---
+
+## Stack
+
+- **[Next.js 15](https://nextjs.org/)** (App Router) + **React 19**
+- **TypeScript**
+- **Tailwind CSS v4**
+- Componentes estilo **shadcn/ui** (accesibles, con `class-variance-authority`)
+- **Framer Motion** — animaciones de entrada y microinteracciones
+- **next-themes** — modo claro/oscuro
+- **lucide-react** — iconos
+
+## Características
+
+- Diseño minimalista (negro / blanco / gris + acento verde), pensado para reclutadores
+- Secciones: hero, sobre mí, stack, proyectos, experiencia, habilidades, certificados y contacto
+- Totalmente responsive (móvil, tablet, desktop) y accesible (ARIA, foco visible, `prefers-reduced-motion`)
+- SEO: metadatos, Open Graph y Twitter Cards
+- Contenido centralizado y tipado en `data/`
+
+## Correr en local
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abrí [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Otros scripts:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build   # build de producción
+npm start       # servir el build
+npm run lint    # linter
+```
 
-## Learn More
+## Estructura
 
-To learn more about Next.js, take a look at the following resources:
+```
+app/                 # App Router (layout, page, estilos globales)
+components/
+  sections/          # secciones de la página (Hero, About, Projects, …)
+  ui/                # primitivos estilo shadcn/ui (Button, Card, …)
+  motion/            # helpers de animación
+data/                # contenido tipado (perfil, proyectos, stack)
+lib/                 # utilidades (cn)
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Despliegue
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Se despliega en un VPS con **Docker + Caddy** (proxy inverso con HTTPS automático).
+Cada push a `master` dispara un **GitHub Action** que actualiza el servidor
+(`.github/workflows/deploy.yml`). Ver [`DEPLOY.md`](./DEPLOY.md) para el detalle.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Hecho por [John Salas](https://github.com/jsalas607) · [LinkedIn](https://www.linkedin.com/in/jsalasparra/)

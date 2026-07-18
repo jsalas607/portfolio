@@ -1,7 +1,5 @@
-# Reemplazá TU_DOMINIO por tu dominio real ANTES de desplegar.
-# Caddy saca y renueva el certificado HTTPS solo (Let's Encrypt).
-
-TU_DOMINIO, www.TU_DOMINIO {
+# Caddy: proxy inverso con HTTPS automático (Let's Encrypt).
+johnsalas.online, www.johnsalas.online {
 	encode zstd gzip
 	reverse_proxy web:3000
 
