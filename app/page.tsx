@@ -5,7 +5,6 @@ import { TechStack } from "@/components/sections/tech-stack";
 import { Projects } from "@/components/sections/projects";
 import { Experience } from "@/components/sections/experience";
 import { Skills } from "@/components/sections/skills";
-import { Certificates } from "@/components/sections/certificates";
 import { Contact } from "@/components/sections/contact";
 import { Footer } from "@/components/sections/footer";
 
@@ -20,7 +19,6 @@ export default function Home() {
         <Projects />
         <Experience />
         <Skills />
-        <Certificates />
         <Contact />
       </main>
       <Footer />
