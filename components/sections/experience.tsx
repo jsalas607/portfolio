@@ -7,8 +7,8 @@ export function Experience() {
     <section id="experiencia" className="mx-auto max-w-5xl scroll-mt-20 px-6 py-24">
       <SectionHeading
         eyebrow="Trayectoria"
-        titulo="Experiencia académica y proyectos personales"
-        descripcion="Todavía no tengo experiencia laboral formal: mi experiencia está en construir proyectos reales de principio a fin."
+        titulo="Experiencia y proyectos"
+        descripcion="Mi experiencia viene de trabajo freelance y proyectos propios, construidos de principio a fin."
       />
 
       <ol className="relative border-l border-border">

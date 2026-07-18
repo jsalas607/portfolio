@@ -38,7 +38,7 @@ export function Contact() {
       <SectionHeading
         eyebrow="Contacto"
         titulo="Hablemos"
-        descripcion="Estoy buscando mi primer empleo como desarrollador. Si tenés una vacante o querés ver más de mi código, escribime."
+        descripcion="Estoy abierto a proyectos freelance y nuevas oportunidades. Si querés trabajar conmigo o ver más de mi código, escribime."
       />
 
       <div className="grid gap-10 lg:grid-cols-[1fr_340px]">
