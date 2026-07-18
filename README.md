@@ -57,8 +57,9 @@ lib/                 # utilidades (cn)
 ## Despliegue
 
 Se despliega en un VPS con **Docker + Caddy** (proxy inverso con HTTPS automático).
-Cada push a `master` dispara un **GitHub Action** que actualiza el servidor
-(`.github/workflows/deploy.yml`). Ver [`DEPLOY.md`](./DEPLOY.md) para el detalle.
+Cada push a `master` dispara un **webhook** que corre en el propio servidor
+(`deploy/webhook.py`): hace `git pull` + rebuild y publica el estado del último
+despliegue en **[/deploy](https://johnsalas.online/deploy)**. Ver [`DEPLOY.md`](./DEPLOY.md).
 
 ---
 

@@ -7,11 +7,27 @@ services:
     environment:
       - NODE_ENV=production
 
+  # Servicio de auto-deploy: recibe el webhook de GitHub y reconstruye el sitio.
+  webhook:
+    build: ./deploy
+    restart: unless-stopped
+    expose:
+      - "9000"
+    environment:
+      - WEBHOOK_SECRET=${WEBHOOK_SECRET:-}
+      - DEPLOY_BRANCH=master
+      - REPO_DIR=/repo
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /root/portafolio:/repo
+      - webhook_state:/state
+
   caddy:
     image: caddy:2-alpine
     restart: unless-stopped
     depends_on:
       - web
+      - webhook
     ports:
       - "80:80"
       - "443:443"
@@ -23,3 +39,4 @@ services:
 volumes:
   caddy_data:
   caddy_config:
+  webhook_state:

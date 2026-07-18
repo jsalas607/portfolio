@@ -1,7 +1,6 @@
 # Caddy: proxy inverso con HTTPS automático (Let's Encrypt).
 johnsalas.online, www.johnsalas.online {
 	encode zstd gzip
-	reverse_proxy web:3000
 
 	# APKs: forzar descarga con el nombre correcto
 	@apk path *.apk
@@ -10,5 +9,18 @@ johnsalas.online, www.johnsalas.online {
 	header {
 		X-Content-Type-Options nosniff
 		Referrer-Policy strict-origin-when-cross-origin
+	}
+
+	# Auto-deploy: el webhook de GitHub y la página de estado van al servicio webhook.
+	handle /webhook* {
+		reverse_proxy webhook:9000
+	}
+	handle /deploy* {
+		reverse_proxy webhook:9000
+	}
+
+	# Todo lo demás → el sitio Next.js
+	handle {
+		reverse_proxy web:3000
 	}
 }
