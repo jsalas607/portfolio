@@ -1,9 +1,9 @@
-# Portafolio — John Salas
+# Portfolio — John Salas
 
-Portafolio personal de **John Salas**, desarrollador full-stack junior.
-Sitio de una sola página, responsive, con modo claro/oscuro y animaciones sutiles.
+My personal portfolio. A responsive single-page site with light/dark mode and
+subtle animations, built to showcase my work as a full-stack developer.
 
-### 🔗 En vivo: **[johnsalas.online](https://johnsalas.online)**
+### 🔗 Live: **[johnsalas.online](https://johnsalas.online)**
 
 ---
 
@@ -12,55 +12,57 @@ Sitio de una sola página, responsive, con modo claro/oscuro y animaciones sutil
 - **[Next.js 15](https://nextjs.org/)** (App Router) + **React 19**
 - **TypeScript**
 - **Tailwind CSS v4**
-- Componentes estilo **shadcn/ui** (accesibles, con `class-variance-authority`)
-- **Framer Motion** — animaciones de entrada y microinteracciones
-- **next-themes** — modo claro/oscuro
-- **lucide-react** — iconos
+- **shadcn/ui**-style components (accessible, built with `class-variance-authority`)
+- **Framer Motion** — entrance animations and micro-interactions
+- **next-themes** — light/dark mode
+- **lucide-react** — icons
 
-## Características
+## What's inside
 
-- Diseño minimalista (negro / blanco / gris + acento verde), pensado para reclutadores
-- Secciones: hero, sobre mí, stack, proyectos, experiencia, habilidades, certificados y contacto
-- Totalmente responsive (móvil, tablet, desktop) y accesible (ARIA, foco visible, `prefers-reduced-motion`)
-- SEO: metadatos, Open Graph y Twitter Cards
-- Contenido centralizado y tipado en `data/`
+- Minimalist design (black / white / gray with a green accent)
+- Sections: hero, about, tech stack, projects, experience, skills and contact
+- Fully responsive (mobile, tablet, desktop) and accessible (ARIA, visible focus, `prefers-reduced-motion`)
+- SEO: metadata, Open Graph and Twitter Cards
+- Content is centralized and typed under `data/`
 
-## Correr en local
+> The UI copy is in Spanish (my audience), while the codebase is in English.
+
+## Run it locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-Abrí [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000).
 
-Otros scripts:
+Other scripts:
 
 ```bash
-npm run build   # build de producción
-npm start       # servir el build
+npm run build   # production build
+npm start       # serve the build
 npm run lint    # linter
 ```
 
-## Estructura
+## Structure
 
 ```
-app/                 # App Router (layout, page, estilos globales)
+app/                 # App Router (layout, page, global styles)
 components/
-  sections/          # secciones de la página (Hero, About, Projects, …)
-  ui/                # primitivos estilo shadcn/ui (Button, Card, …)
-  motion/            # helpers de animación
-data/                # contenido tipado (perfil, proyectos, stack)
-lib/                 # utilidades (cn)
+  sections/          # page sections (Hero, About, Projects, …)
+  ui/                # shadcn/ui-style primitives (Button, Card, …)
+  motion/            # animation helpers
+data/                # typed content (profile, projects, stack)
+lib/                 # utilities (cn)
 ```
 
-## Despliegue
+## Deployment
 
-Se despliega en un VPS con **Docker + Caddy** (proxy inverso con HTTPS automático).
-Cada push a `master` dispara un **webhook** que corre en el propio servidor
-(`deploy/webhook.py`): hace `git pull` + rebuild y publica el estado del último
-despliegue en **[/deploy](https://johnsalas.online/deploy)**. Ver [`DEPLOY.md`](./DEPLOY.md).
+I deploy it to a VPS with **Docker + Caddy** (reverse proxy with automatic HTTPS).
+Every push to `master` triggers a **webhook** running on the server itself
+(`deploy/webhook.py`): it runs `git pull` + rebuild and publishes the status of
+the latest deploy at **[/deploy](https://johnsalas.online/deploy)**. See [`DEPLOY.md`](./DEPLOY.md).
 
 ---
 
-Hecho por [John Salas](https://github.com/jsalas607) · [LinkedIn](https://www.linkedin.com/in/jsalasparra/)
+Built by me, [John Salas](https://github.com/jsalas607) · [LinkedIn](https://www.linkedin.com/in/jsalasparra/)

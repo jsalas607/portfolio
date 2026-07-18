@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { perfil } from "@/data/perfil";
+import { profile } from "@/data/profile";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 
-const enlaces = [
+const links = [
   { href: "#inicio", label: "Inicio" },
   { href: "#sobre", label: "Sobre mí" },
   { href: "#tecnologias", label: "Tecnologías" },
@@ -15,7 +15,7 @@ const enlaces = [
 ];
 
 export function Navbar() {
-  const [abierto, setAbierto] = useState(false);
+  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -34,18 +34,18 @@ export function Navbar() {
     >
       <nav aria-label="Navegación principal" className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
         <a href="#inicio" className="font-mono text-sm font-semibold tracking-tight text-foreground">
-          {perfil.nombre.split(" ")[0]}
+          {profile.name.split(" ")[0]}
           <span className="text-accent-strong">.dev</span>
         </a>
 
         <div className="hidden items-center gap-1 md:flex">
-          {enlaces.map((e) => (
+          {links.map((link) => (
             <a
-              key={e.href}
-              href={e.href}
+              key={link.href}
+              href={link.href}
               className="rounded-md px-3 py-2 text-sm text-muted transition-colors hover:text-foreground"
             >
-              {e.label}
+              {link.label}
             </a>
           ))}
           <span className="mx-2 h-5 w-px bg-border" aria-hidden />
@@ -56,27 +56,27 @@ export function Navbar() {
           <ThemeToggle />
           <button
             type="button"
-            onClick={() => setAbierto((v) => !v)}
-            aria-expanded={abierto}
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
             aria-controls="menu-movil"
-            aria-label={abierto ? "Cerrar menú" : "Abrir menú"}
+            aria-label={open ? "Cerrar menú" : "Abrir menú"}
             className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border text-muted transition-colors hover:text-foreground"
           >
-            {abierto ? <X className="size-4" /> : <Menu className="size-4" />}
+            {open ? <X className="size-4" /> : <Menu className="size-4" />}
           </button>
         </div>
       </nav>
 
-      {abierto ? (
+      {open ? (
         <ul id="menu-movil" className="border-t border-border bg-background px-6 pb-4 md:hidden">
-          {enlaces.map((e) => (
-            <li key={e.href}>
+          {links.map((link) => (
+            <li key={link.href}>
               <a
-                href={e.href}
-                onClick={() => setAbierto(false)}
+                href={link.href}
+                onClick={() => setOpen(false)}
                 className="block py-3 text-sm text-muted transition-colors hover:text-foreground"
               >
-                {e.label}
+                {link.label}
               </a>
             </li>
           ))}

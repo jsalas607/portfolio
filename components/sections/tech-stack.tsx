@@ -9,19 +9,19 @@ export function TechStack() {
       <div className="mx-auto max-w-5xl px-6 py-24">
         <SectionHeading
           eyebrow="Tecnologías"
-          titulo="Mi stack de trabajo"
-          descripcion="Herramientas con las que construyo, agrupadas por dónde las uso en una aplicación."
+          title="Mi stack de trabajo"
+          description="Herramientas con las que construyo, agrupadas por dónde las uso en una aplicación."
         />
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {techStack.map((grupo, i) => (
-            <Reveal key={grupo.categoria} delay={i * 0.06}>
+          {techStack.map((group, i) => (
+            <Reveal key={group.category} delay={i * 0.06}>
               <div className="h-full rounded-xl border border-border bg-card p-6 transition-colors hover:border-accent/40">
                 <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-accent-strong">
-                  {grupo.categoria}
+                  {group.category}
                 </h3>
                 <ul className="flex flex-wrap gap-2">
-                  {grupo.items.map((item) => (
+                  {group.items.map((item) => (
                     <li key={item}>
                       <Badge>{item}</Badge>
                     </li>

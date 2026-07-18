@@ -1,11 +1,11 @@
 import Image from "next/image";
 import { Sparkles } from "lucide-react";
-import { perfil } from "@/data/perfil";
+import { profile } from "@/data/profile";
 import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/motion/reveal";
 
 export function About() {
-  const iniciales = perfil.nombre
+  const initials = profile.name
     .split(" ")
     .map((p) => p[0])
     .join("")
@@ -13,13 +13,13 @@ export function About() {
 
   return (
     <section id="sobre" className="mx-auto max-w-5xl scroll-mt-20 px-6 py-24">
-      <SectionHeading eyebrow="Sobre mí" titulo="Un poco sobre quién soy" />
+      <SectionHeading eyebrow="Sobre mí" title="Un poco sobre quién soy" />
 
       <div className="grid gap-12 lg:grid-cols-[1fr_320px] lg:gap-16">
         <Reveal className="space-y-4">
-          {perfil.bio.map((parrafo, i) => (
+          {profile.bio.map((paragraph, i) => (
             <p key={i} className="text-base leading-relaxed text-muted">
-              {parrafo}
+              {paragraph}
             </p>
           ))}
 
@@ -29,7 +29,7 @@ export function About() {
               Aprendiendo ahora
             </p>
             <ul className="flex flex-wrap gap-2">
-              {perfil.aprendiendo.map((item) => (
+              {profile.learning.map((item) => (
                 <li key={item} className="rounded-md bg-card px-2.5 py-1 font-mono text-xs text-muted">
                   {item}
                 </li>
@@ -42,10 +42,10 @@ export function About() {
           <div className="relative mx-auto w-full max-w-[300px]">
             <div className="absolute -inset-3 -z-10 rounded-2xl bg-accent/10 blur-2xl" aria-hidden />
             <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-border bg-card-2">
-              {perfil.foto ? (
+              {profile.photo ? (
                 <Image
-                  src={perfil.foto}
-                  alt={`Foto de ${perfil.nombre}`}
+                  src={profile.photo}
+                  alt={`Foto de ${profile.name}`}
                   fill
                   sizes="300px"
                   className="object-cover"
@@ -53,7 +53,7 @@ export function About() {
               ) : (
                 <div className="flex h-full w-full flex-col items-center justify-center gap-3 text-center">
                   <span className="flex h-20 w-20 items-center justify-center rounded-full border border-accent/30 bg-accent/10 font-mono text-2xl font-semibold text-accent-strong">
-                    {iniciales}
+                    {initials}
                   </span>
                   <span className="px-6 font-mono text-xs text-subtle">
                     Espacio para tu foto profesional

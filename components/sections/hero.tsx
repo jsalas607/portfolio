@@ -3,7 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Download, Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/brand-icons";
-import { perfil } from "@/data/perfil";
+import { profile } from "@/data/profile";
 import { Button } from "@/components/ui/button";
 
 export function Hero() {
@@ -24,7 +24,7 @@ export function Hero() {
       />
       <div className="mx-auto grid max-w-5xl items-center gap-14 px-6 pb-20 pt-36 sm:pt-44 lg:grid-cols-[1.1fr_0.9fr] lg:pb-28">
         <div className="min-w-0">
-          {perfil.disponible ? (
+          {profile.available ? (
             <motion.p
               {...rise(0)}
               className="mb-6 inline-flex items-center gap-2 rounded-full border border-accent/25 bg-accent/10 px-3 py-1 text-xs font-medium text-accent-strong"
@@ -41,15 +41,15 @@ export function Hero() {
             {...rise(0.08)}
             className="text-balance text-4xl font-semibold tracking-tight text-foreground sm:text-6xl"
           >
-            {perfil.nombre}
+            {profile.name}
           </motion.h1>
 
           <motion.p {...rise(0.16)} className="mt-3 font-mono text-lg text-accent-strong sm:text-xl">
-            {perfil.rol}
+            {profile.role}
           </motion.p>
 
           <motion.p {...rise(0.24)} className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-            {perfil.tagline}
+            {profile.tagline}
           </motion.p>
 
           <motion.div {...rise(0.32)} className="mt-9 flex flex-wrap items-center gap-3">
@@ -58,9 +58,9 @@ export function Hero() {
                 Ver proyectos <ArrowRight />
               </a>
             </Button>
-            {perfil.cv ? (
+            {profile.cv ? (
               <Button asChild variant="outline">
-                <a href={perfil.cv} download>
+                <a href={profile.cv} download>
                   <Download /> Descargar CV
                 </a>
               </Button>
@@ -73,7 +73,7 @@ export function Hero() {
             )}
             <div className="ml-1 flex items-center gap-1">
               <a
-                href={perfil.github}
+                href={profile.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
@@ -81,9 +81,9 @@ export function Hero() {
               >
                 <GithubIcon className="size-5" />
               </a>
-              {perfil.linkedin ? (
+              {profile.linkedin ? (
                 <a
-                  href={perfil.linkedin}
+                  href={profile.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
@@ -124,7 +124,7 @@ function CodeCard() {
           <span className="text-foreground">dev</span> <span className="text-subtle">=</span>{" "}
           <span className="text-subtle">{"{"}</span>
           {"\n"}
-          {"  "}rol<span className="text-subtle">:</span>{" "}
+          {"  "}role<span className="text-subtle">:</span>{" "}
           <span className="text-accent-strong">&quot;Full Stack&quot;</span>
           <span className="text-subtle">,</span>
           {"\n"}
@@ -137,11 +137,11 @@ function CodeCard() {
           <span className="text-accent-strong">&quot;FastAPI&quot;</span>
           <span className="text-subtle">],</span>
           {"\n"}
-          {"  "}ubicacion<span className="text-subtle">:</span>{" "}
+          {"  "}location<span className="text-subtle">:</span>{" "}
           <span className="text-accent-strong">&quot;Bogotá, CO&quot;</span>
           <span className="text-subtle">,</span>
           {"\n"}
-          {"  "}disponible<span className="text-subtle">:</span>{" "}
+          {"  "}available<span className="text-subtle">:</span>{" "}
           <span className="text-accent">true</span>
           <span className="text-subtle">,</span>
           {"\n"}

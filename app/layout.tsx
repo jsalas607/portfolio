@@ -1,21 +1,21 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { perfil } from "@/data/perfil";
+import { profile } from "@/data/profile";
 import { ThemeProvider } from "@/components/theme-provider";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
-const titulo = `${perfil.nombre} — ${perfil.rol}`;
+const title = `${profile.name} — ${profile.role}`;
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://johnsalas.online"),
   title: {
-    default: titulo,
-    template: `%s — ${perfil.nombre}`,
+    default: title,
+    template: `%s — ${profile.name}`,
   },
-  description: perfil.tagline,
+  description: profile.tagline,
   keywords: [
     "desarrollador web",
     "full stack",
@@ -29,21 +29,21 @@ export const metadata: Metadata = {
     "Flutter",
     "Bogotá",
     "Colombia",
-    perfil.nombre,
+    profile.name,
   ],
-  authors: [{ name: perfil.nombre, url: perfil.github }],
-  creator: perfil.nombre,
+  authors: [{ name: profile.name, url: profile.github }],
+  creator: profile.name,
   openGraph: {
     type: "website",
     locale: "es_CO",
-    title: titulo,
-    description: perfil.tagline,
-    siteName: `${perfil.nombre} · Portafolio`,
+    title,
+    description: profile.tagline,
+    siteName: `${profile.name} · Portafolio`,
   },
   twitter: {
     card: "summary_large_image",
-    title: titulo,
-    description: perfil.tagline,
+    title,
+    description: profile.tagline,
   },
   robots: { index: true, follow: true },
 };

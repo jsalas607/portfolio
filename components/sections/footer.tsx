@@ -1,14 +1,14 @@
 import type { ElementType } from "react";
 import { Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/brand-icons";
-import { perfil } from "@/data/perfil";
+import { profile } from "@/data/profile";
 
 export function Footer() {
-  const enlaces = [
-    { icon: Mail as ElementType, href: `mailto:${perfil.email}`, label: "Email", externo: false },
-    { icon: GithubIcon as ElementType, href: perfil.github, label: "GitHub", externo: true },
-    ...(perfil.linkedin
-      ? [{ icon: LinkedinIcon as ElementType, href: perfil.linkedin, label: "LinkedIn", externo: true }]
+  const links = [
+    { icon: Mail as ElementType, href: `mailto:${profile.email}`, label: "Email", external: false },
+    { icon: GithubIcon as ElementType, href: profile.github, label: "GitHub", external: true },
+    ...(profile.linkedin
+      ? [{ icon: LinkedinIcon as ElementType, href: profile.linkedin, label: "LinkedIn", external: true }]
       : []),
   ];
 
@@ -17,7 +17,7 @@ export function Footer() {
       <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-6 px-6 py-10 sm:flex-row">
         <div className="text-center sm:text-left">
           <p className="font-mono text-sm font-semibold text-foreground">
-            {perfil.nombre.split(" ")[0]}
+            {profile.name.split(" ")[0]}
             <span className="text-accent-strong">.dev</span>
           </p>
           <p className="mt-1 text-xs text-subtle">
@@ -34,17 +34,17 @@ export function Footer() {
           </p>
         </div>
         <div className="flex items-center gap-1">
-          {enlaces.map((e) => {
-            const Icono = e.icon;
+          {links.map((link) => {
+            const Icon = link.icon;
             return (
               <a
-                key={e.label}
-                href={e.href}
-                aria-label={e.label}
-                {...(e.externo ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                key={link.label}
+                href={link.href}
+                aria-label={link.label}
+                {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-muted transition-colors hover:text-foreground"
               >
-                <Icono className="size-[18px]" />
+                <Icon className="size-[18px]" />
               </a>
             );
           })}

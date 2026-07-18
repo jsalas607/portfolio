@@ -1,22 +1,22 @@
 import { Award, ExternalLink } from "lucide-react";
-import { certificados } from "@/data/stack";
+import { certificates } from "@/data/stack";
 import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/motion/reveal";
 
 export function Certificates() {
   return (
     <section id="certificados" className="mx-auto max-w-5xl scroll-mt-20 px-6 py-24">
-      <SectionHeading eyebrow="Certificados" titulo="Formación y credenciales" />
+      <SectionHeading eyebrow="Certificados" title="Formación y credenciales" />
 
-      {certificados.length > 0 ? (
+      {certificates.length > 0 ? (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {certificados.map((cert, i) => (
-            <Reveal key={cert.titulo} delay={i * 0.06}>
+          {certificates.map((cert, i) => (
+            <Reveal key={cert.title} delay={i * 0.06}>
               <div className="flex h-full flex-col rounded-xl border border-border bg-card p-6">
                 <Award className="size-6 text-accent-strong" />
-                <h3 className="mt-4 text-base font-semibold text-foreground">{cert.titulo}</h3>
+                <h3 className="mt-4 text-base font-semibold text-foreground">{cert.title}</h3>
                 <p className="mt-1 text-sm text-muted">
-                  {cert.emisor} · {cert.anio}
+                  {cert.issuer} · {cert.year}
                 </p>
                 {cert.url ? (
                   <a

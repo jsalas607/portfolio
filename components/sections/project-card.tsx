@@ -12,26 +12,26 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { GithubIcon } from "@/components/brand-icons";
-import type { Proyecto } from "@/data/proyectos";
+import type { Project } from "@/data/projects";
 import { Badge } from "@/components/ui/badge";
 
-const iconoPorCategoria: Record<string, LucideIcon> = {
+const iconByCategory: Record<string, LucideIcon> = {
   "Full-stack": Server,
   "Frontend web": Gamepad2,
   "Móvil": Smartphone,
 };
 
-export function ProjectCard({ proyecto }: { proyecto: Proyecto }) {
-  const Icono = iconoPorCategoria[proyecto.categoria] ?? Code2;
+export function ProjectCard({ project }: { project: Project }) {
+  const Icon = iconByCategory[project.category] ?? Code2;
 
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/5">
       {/* Preview visual (placeholder mientras no haya screenshot real) */}
       <div className="relative aspect-[16/9] overflow-hidden border-b border-border bg-card-2">
-        {proyecto.imagen ? (
+        {project.image ? (
           <Image
-            src={proyecto.imagen}
-            alt={`Vista de ${proyecto.titulo}`}
+            src={project.image}
+            alt={`Vista de ${project.title}`}
             fill
             sizes="(max-width: 768px) 100vw, 400px"
             className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -39,10 +39,10 @@ export function ProjectCard({ proyecto }: { proyecto: Proyecto }) {
         ) : (
           <div className="flex h-full w-full items-center justify-center">
             <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-transparent" />
-            <Icono className="size-12 text-subtle transition-colors duration-300 group-hover:text-accent-strong" strokeWidth={1.25} />
+            <Icon className="size-12 text-subtle transition-colors duration-300 group-hover:text-accent-strong" strokeWidth={1.25} />
           </div>
         )}
-        {proyecto.destacado ? (
+        {project.featured ? (
           <span className="absolute left-3 top-3 rounded-md border border-accent/25 bg-background/70 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-accent-strong backdrop-blur">
             Destacado
           </span>
@@ -50,17 +50,17 @@ export function ProjectCard({ proyecto }: { proyecto: Proyecto }) {
       </div>
 
       <div className="flex flex-1 flex-col p-6">
-        <span className="font-mono text-xs uppercase tracking-wider text-subtle">{proyecto.categoria}</span>
+        <span className="font-mono text-xs uppercase tracking-wider text-subtle">{project.category}</span>
         <h3 className="mt-2 text-lg font-semibold tracking-tight text-foreground transition-colors group-hover:text-accent-strong">
-          {proyecto.titulo}
+          {project.title}
         </h3>
-        <p className="mt-3 text-sm leading-relaxed text-muted">{proyecto.descripcion}</p>
+        <p className="mt-3 text-sm leading-relaxed text-muted">{project.description}</p>
 
         <p className="mt-4 border-l-2 border-accent/40 pl-3 text-sm leading-relaxed text-muted">
-          {proyecto.problema}
+          {project.problem}
         </p>
 
-        {proyecto.demoAcceso ? (
+        {project.demoAccess ? (
           <div className="mt-5 rounded-lg border border-accent/25 bg-accent/5 p-3.5">
             <p className="flex items-center gap-1.5 text-xs font-medium text-accent-strong">
               <KeyRound className="size-3.5" />
@@ -69,31 +69,31 @@ export function ProjectCard({ proyecto }: { proyecto: Proyecto }) {
             <dl className="mt-2 flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs">
               <div className="flex gap-1.5">
                 <dt className="text-subtle">usuario:</dt>
-                <dd className="text-foreground">{proyecto.demoAcceso.usuario}</dd>
+                <dd className="text-foreground">{project.demoAccess.username}</dd>
               </div>
               <div className="flex gap-1.5">
                 <dt className="text-subtle">clave:</dt>
-                <dd className="text-foreground">{proyecto.demoAcceso.clave}</dd>
+                <dd className="text-foreground">{project.demoAccess.password}</dd>
               </div>
             </dl>
             <p className="mt-2.5 flex gap-1.5 text-xs leading-relaxed text-muted">
               <TriangleAlert className="mt-0.5 size-3.5 shrink-0 text-subtle" />
-              {proyecto.demoAcceso.aviso}
+              {project.demoAccess.notice}
             </p>
           </div>
         ) : null}
 
         <ul className="mt-5 flex flex-wrap gap-2">
-          {proyecto.stack.map((t) => (
+          {project.stack.map((t) => (
             <li key={t}>
               <Badge>{t}</Badge>
             </li>
           ))}
         </ul>
 
-        {proyecto.jugar ? (
+        {project.play ? (
           <a
-            href={proyecto.jugar}
+            href={project.play}
             className="mt-6 inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-accent-fg transition-all hover:brightness-110 active:scale-[0.98]"
           >
             <Play className="size-4" /> Jugar ahora
@@ -101,9 +101,9 @@ export function ProjectCard({ proyecto }: { proyecto: Proyecto }) {
         ) : null}
 
         <div className="mt-6 flex flex-wrap items-center gap-4 pt-1">
-          {proyecto.repo ? (
+          {project.repo ? (
             <a
-              href={proyecto.repo}
+              href={project.repo}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-colors hover:text-accent-strong"
@@ -113,9 +113,9 @@ export function ProjectCard({ proyecto }: { proyecto: Proyecto }) {
           ) : (
             <span className="inline-flex items-center gap-1.5 text-sm text-subtle">Código: próximamente</span>
           )}
-          {proyecto.demo ? (
+          {project.demo ? (
             <a
-              href={proyecto.demo}
+              href={project.demo}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-colors hover:text-accent-strong"
@@ -123,9 +123,9 @@ export function ProjectCard({ proyecto }: { proyecto: Proyecto }) {
               <ArrowUpRight className="size-4" /> Demo
             </a>
           ) : null}
-          {proyecto.apk ? (
+          {project.apk ? (
             <a
-              href={proyecto.apk}
+              href={project.apk}
               download
               className="inline-flex items-center gap-1.5 text-sm font-medium text-accent-strong transition-colors hover:brightness-110"
             >
