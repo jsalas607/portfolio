@@ -1,0 +1,16 @@
+# Reemplazá TU_DOMINIO por tu dominio real ANTES de desplegar.
+# Caddy saca y renueva el certificado HTTPS solo (Let's Encrypt).
+
+TU_DOMINIO, www.TU_DOMINIO {
+	encode zstd gzip
+	reverse_proxy web:3000
+
+	# APKs: forzar descarga con el nombre correcto
+	@apk path *.apk
+	header @apk Content-Disposition attachment
+
+	header {
+		X-Content-Type-Options nosniff
+		Referrer-Policy strict-origin-when-cross-origin
+	}
+}

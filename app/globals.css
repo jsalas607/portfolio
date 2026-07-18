@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+/* Dark mode controlado por la clase .dark que aplica next-themes (no solo el SO) */
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+  --muted: #52525b;         /* texto secundario sobre blanco */
+  --subtle: #71717a;        /* texto terciario / captions */
+  --card: #ffffff;
+  --card-2: #fafafa;
+  --border: #e4e4e7;
+  --accent: #16a34a;        /* verde interactivo en claro (contraste WCAG) */
+  --accent-strong: #15803d; /* verde para texto/links sobre blanco */
+  --accent-fg: #ffffff;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --muted: #a1a1aa;
+  --subtle: #8a8a93;
+  --card: #101012;
+  --card-2: #16161a;
+  --border: #26262b;
+  --accent: #22c55e;        /* el verde de marca del brief, brilla sobre negro */
+  --accent-strong: #4ade80;
+  --accent-fg: #052e16;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-card: var(--card);
+  --color-card-2: var(--card-2);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-fg: var(--accent-fg);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
