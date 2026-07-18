@@ -21,7 +21,16 @@ export function Footer() {
             <span className="text-accent-strong">.dev</span>
           </p>
           <p className="mt-1 text-xs text-subtle">
-            Construido con Next.js y Tailwind CSS · © {new Date().getFullYear()}
+            Construido con Next.js y Tailwind CSS ·{" "}
+            <a
+              href="https://github.com/jsalas607/portfolio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2 transition-colors hover:text-accent-strong"
+            >
+              código
+            </a>{" "}
+            · © {new Date().getFullYear()}
           </p>
         </div>
         <div className="flex items-center gap-1">
