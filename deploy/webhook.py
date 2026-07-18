@@ -62,8 +62,9 @@ def run_deploy():
             subprocess.run(["git", "-C", REPO, "fetch", "origin", BRANCH], check=True)
             subprocess.run(["git", "-C", REPO, "reset", "--hard", f"origin/{BRANCH}"], check=True)
             compose("up", "-d", "--build", "web")
-            # recarga graceful de Caddy (por si cambió el Caddyfile)
-            compose("exec", "-T", "caddy", "caddy", "reload", "--config", "/etc/caddy/Caddyfile", check=False)
+            # recrear Caddy toma los cambios del Caddyfile (bind-mount por inodo:
+            # un reload leería el inodo viejo tras un git reset)
+            compose("up", "-d", "--force-recreate", "caddy")
         except subprocess.CalledProcessError as e:
             ok, error = False, str(e)
 

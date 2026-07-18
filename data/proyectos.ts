@@ -10,6 +10,8 @@ export interface Proyecto {
   stack: string[];
   repo: string | null;
   demo: string | null;
+  // Ruta interna para jugar embebido (p. ej. "/juego"). Opcional.
+  jugar?: string | null;
   // Enlace de descarga directa (p. ej. un APK en /public). Opcional.
   apk?: string | null;
   // Cuenta de prueba pública para que cualquiera pruebe la app, con su advertencia.
@@ -50,12 +52,13 @@ export const proyectos: Proyecto[] = [
     categoria: "Frontend web",
     destacado: false,
     descripcion:
-      "Juego web interactivo con estética retro de 8 bits: flujo de varias pantallas (inicio, sala de juego y game over), la lógica completa de las cinco jugadas y marcador de partidas.",
+      "Juego web interactivo con estética retro de 8 bits: modo un jugador y multijugador en tiempo real. Flujo de varias pantallas (inicio, sala de juego y game over), la lógica completa de las cinco jugadas y marcador de partidas. Podés jugarlo acá mismo.",
     problema:
-      "Un producto jugable de punta a punta que demuestra manejo de estado, ruteo entre pantallas y composición de componentes en React y Next.js, con una interfaz cuidada en lugar de un ejercicio suelto.",
-    stack: ["Next.js", "React", "JavaScript", "NES.css"],
+      "Un producto jugable de punta a punta que demuestra manejo de estado, ruteo entre pantallas y multijugador en tiempo real con Firebase. Está embebido en este portafolio, así que se prueba sin salir del sitio.",
+    stack: ["Next.js", "React", "Firebase", "NES.css"],
     repo: "https://github.com/jsalas607/game_spsls",
-    demo: null, // TODO: desplegar en Vercel y pegar la URL
+    demo: null,
+    jugar: "/juego",
     imagen: null,
   },
   {

@@ -7,6 +7,7 @@ import {
   Smartphone,
   Code2,
   KeyRound,
+  Play,
   TriangleAlert,
   type LucideIcon,
 } from "lucide-react";
@@ -89,6 +90,15 @@ export function ProjectCard({ proyecto }: { proyecto: Proyecto }) {
             </li>
           ))}
         </ul>
+
+        {proyecto.jugar ? (
+          <a
+            href={proyecto.jugar}
+            className="mt-6 inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-accent-fg transition-all hover:brightness-110 active:scale-[0.98]"
+          >
+            <Play className="size-4" /> Jugar ahora
+          </a>
+        ) : null}
 
         <div className="mt-6 flex flex-wrap items-center gap-4 pt-1">
           {proyecto.repo ? (

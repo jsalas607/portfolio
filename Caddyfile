@@ -24,3 +24,9 @@ johnsalas.online, www.johnsalas.online {
 		reverse_proxy web:3000
 	}
 }
+
+# El juego (Piedra, Papel, Tijera, Lagarto, Spock) en su subdominio.
+juego.johnsalas.online {
+	encode zstd gzip
+	reverse_proxy juego:3000
+}
