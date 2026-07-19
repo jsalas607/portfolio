@@ -16,10 +16,14 @@ services:
     environment:
       - WEBHOOK_SECRET=${WEBHOOK_SECRET:-}
       - DEPLOY_BRANCH=master
-      - REPO_DIR=/repo
+      # El repo se monta con el MISMO path que el host para que los bind-mounts
+      # relativos del compose (p. ej. ./Caddyfile) resuelvan igual dentro del
+      # contenedor y en el daemon (host). Con /repo, el daemon no encontraba
+      # /repo/Caddyfile y creaba un dir fantasma -> recreate de caddy fallaba.
+      - REPO_DIR=/root/portafolio
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /root/portafolio:/repo
+      - /root/portafolio:/root/portafolio
       - webhook_state:/state
 
   caddy:
