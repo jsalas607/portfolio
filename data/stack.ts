@@ -38,7 +38,7 @@ export const skills: Record<Lang, Skill[]> = {
     { area: "UI / Responsive design", level: 3, label: "Sólido" },
     { area: "APIs y tiempo real", level: 3, label: "Sólido" },
     { area: "Móvil (Flutter)", level: 3, label: "Sólido" },
-    { area: "Base de datos", level: 3, label: "Sólido" },
+    { area: "Base de datos (PostgreSQL / SQL / SQLite)", level: 3, label: "Sólido" },
     { area: "Git / GitHub", level: 3, label: "Sólido" },
   ],
   en: [
@@ -47,7 +47,7 @@ export const skills: Record<Lang, Skill[]> = {
     { area: "UI / Responsive design", level: 3, label: "Solid" },
     { area: "APIs & real-time", level: 3, label: "Solid" },
     { area: "Mobile (Flutter)", level: 3, label: "Solid" },
-    { area: "Databases", level: 3, label: "Solid" },
+    { area: "Databases (PostgreSQL / SQL / SQLite)", level: 3, label: "Solid" },
     { area: "Git / GitHub", level: 3, label: "Solid" },
   ],
 };
@@ -92,7 +92,7 @@ export const experience: Record<Lang, Experience[]> = {
   ],
   en: [
     {
-      title: "Sistema de Gestión para Restaurantes",
+      title: "Restaurant Management System",
       context: "Personal project · Full-stack",
       period: "2026",
       points: [
@@ -102,7 +102,7 @@ export const experience: Record<Lang, Experience[]> = {
       ],
     },
     {
-      title: "Web game — Piedra, Papel, Tijera, Lagarto, Spock",
+      title: "Web game — Rock, Paper, Scissors, Lizard, Spock",
       context: "Personal project · Frontend",
       period: "2025",
       points: [

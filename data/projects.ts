@@ -1,5 +1,5 @@
 // Los proyectos del portafolio (bilingüe). repo/demo en null => no se muestra ese botón.
-// Los títulos NO se traducen; sí description, problem y demoAccess.notice.
+// Títulos traducidos por idioma (Spicy Card queda igual en ambos); también description, problem y demoAccess.notice.
 import type { Lang } from "@/lib/i18n";
 
 export interface Project {
@@ -83,7 +83,7 @@ export const projects: Record<Lang, Project[]> = {
   en: [
     {
       id: "restaurant",
-      title: "Sistema de Gestión para Restaurantes",
+      title: "Restaurant Management System",
       category: "Full-stack",
       featured: true,
       description:
@@ -103,7 +103,7 @@ export const projects: Record<Lang, Project[]> = {
     },
     {
       id: "rpsls-game",
-      title: "Piedra, Papel, Tijera, Lagarto, Spock",
+      title: "Rock, Paper, Scissors, Lizard, Spock",
       category: "Frontend web",
       featured: false,
       description:
