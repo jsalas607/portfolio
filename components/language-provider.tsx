@@ -10,25 +10,21 @@ interface LanguageContextValue {
 }
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
-const STORAGE_KEY = "lang";
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLang] = useState<Lang>("en");
   const [mounted, setMounted] = useState(false);
 
-  // El idioma real solo se conoce en el cliente: por eso el default "en" (que
-  // coincide con el SSR) y recién tras montar leemos la preferencia guardada.
+  // El idioma NO se persiste: siempre arranca en el default ("en") y el toggle
+  // solo vive en memoria durante la sesión. Limpiamos cualquier "lang" viejo.
   useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored === "es" || stored === "en") setLang(stored);
+    localStorage.removeItem("lang");
     setMounted(true);
   }, []);
 
   useEffect(() => {
-    if (!mounted) return;
-    localStorage.setItem(STORAGE_KEY, lang);
     document.documentElement.lang = lang;
-  }, [lang, mounted]);
+  }, [lang]);
 
   const toggle = () => setLang((l) => (l === "es" ? "en" : "es"));
 
