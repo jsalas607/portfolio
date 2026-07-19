@@ -14,6 +14,7 @@ const links = [
   { href: "#sobre", key: "about" },
   { href: "#tecnologias", key: "tech" },
   { href: "#proyectos", key: "projects" },
+  { href: "#habilidades", key: "skills" },
   { href: "#contacto", key: "contact" },
 ] as const;
 
@@ -29,6 +30,16 @@ export function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // El menú móvil se cierra con Escape (además del backdrop, ver abajo).
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
 
   return (
     <header
@@ -75,7 +86,15 @@ export function Navbar() {
       </nav>
 
       {open ? (
-        <ul id="menu-movil" className="border-t border-border bg-background px-6 pb-4 md:hidden">
+        <div
+          className="fixed inset-0 top-16 z-40 bg-background/60 backdrop-blur-sm md:hidden"
+          onClick={() => setOpen(false)}
+          aria-hidden
+        />
+      ) : null}
+
+      {open ? (
+        <ul id="menu-movil" className="relative z-50 border-t border-border bg-background px-6 pb-4 md:hidden">
           {links.map((link) => (
             <li key={link.href}>
               <a

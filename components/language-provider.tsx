@@ -13,10 +13,10 @@ const LanguageContext = createContext<LanguageContextValue | null>(null);
 const STORAGE_KEY = "lang";
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLang] = useState<Lang>("es");
+  const [lang, setLang] = useState<Lang>("en");
   const [mounted, setMounted] = useState(false);
 
-  // El idioma real solo se conoce en el cliente: por eso el default "es" (que
+  // El idioma real solo se conoce en el cliente: por eso el default "en" (que
   // coincide con el SSR) y recién tras montar leemos la preferencia guardada.
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY);

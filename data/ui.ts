@@ -2,7 +2,7 @@
 import type { Lang } from "@/lib/i18n";
 
 interface UIStrings {
-  nav: { home: string; about: string; tech: string; projects: string; contact: string };
+  nav: { home: string; about: string; tech: string; projects: string; skills: string; contact: string };
   menuOpen: string;
   menuClose: string;
   availableBadge: string;
@@ -22,7 +22,7 @@ interface UIStrings {
     downloadApk: string;
   };
   experience: { eyebrow: string; title: string; description: string };
-  skills: { eyebrow: string; title: string; description: string; levelAria: string };
+  skills: { eyebrow: string; title: string; levelAria: string };
   certificates: { eyebrow: string; title: string; empty: string };
   contact: {
     eyebrow: string;
@@ -48,7 +48,7 @@ interface UIStrings {
 
 export const ui: Record<Lang, UIStrings> = {
   es: {
-    nav: { home: "Inicio", about: "Sobre mí", tech: "Tecnologías", projects: "Proyectos", contact: "Contacto" },
+    nav: { home: "Inicio", about: "Sobre mí", tech: "Tecnologías", projects: "Proyectos", skills: "Habilidades", contact: "Contacto" },
     menuOpen: "Abrir menú",
     menuClose: "Cerrar menú",
     availableBadge: "Disponible para trabajar",
@@ -88,8 +88,7 @@ export const ui: Record<Lang, UIStrings> = {
     },
     skills: {
       eyebrow: "Habilidades",
-      title: "Dónde estoy parado",
-      description: "Un nivel honesto por área en vez de porcentajes inventados: sólido, en práctica o aprendiendo.",
+      title: "Nivel de mis habilidades",
       levelAria: "Nivel",
     },
     certificates: {
@@ -121,7 +120,7 @@ export const ui: Record<Lang, UIStrings> = {
     categories: { "Full-stack": "Full-stack", "Frontend web": "Frontend web", "Móvil": "Móvil" },
   },
   en: {
-    nav: { home: "Home", about: "About", tech: "Tech", projects: "Projects", contact: "Contact" },
+    nav: { home: "Home", about: "About", tech: "Tech", projects: "Projects", skills: "Skills", contact: "Contact" },
     menuOpen: "Open menu",
     menuClose: "Close menu",
     availableBadge: "Available for work",
@@ -161,8 +160,7 @@ export const ui: Record<Lang, UIStrings> = {
     },
     skills: {
       eyebrow: "Skills",
-      title: "Where I stand",
-      description: "An honest level per area instead of made-up percentages: solid, practicing or learning.",
+      title: "My skill level",
       levelAria: "Level",
     },
     certificates: {

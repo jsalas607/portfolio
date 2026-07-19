@@ -14,11 +14,7 @@ export function Skills() {
   return (
     <section id="habilidades" className="scroll-mt-20 border-y border-border bg-card-2/40">
       <div className="mx-auto max-w-5xl px-6 py-24">
-        <SectionHeading
-          eyebrow={t.skills.eyebrow}
-          title={t.skills.title}
-          description={t.skills.description}
-        />
+        <SectionHeading eyebrow={t.skills.eyebrow} title={t.skills.title} />
 
         <div className="grid gap-x-10 gap-y-6 sm:grid-cols-2">
           {skills[lang].map((skill, i) => (

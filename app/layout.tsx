@@ -8,8 +8,8 @@ import { LanguageProvider } from "@/components/language-provider";
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
-// Metadata (SEO) en español: es el idioma del render inicial / la audiencia principal.
-const me = profile.es;
+// Metadata (SEO) en inglés: es el idioma del render inicial por defecto.
+const me = profile.en;
 const title = `${me.name} — ${me.role}`;
 
 export const metadata: Metadata = {
@@ -38,10 +38,10 @@ export const metadata: Metadata = {
   creator: me.name,
   openGraph: {
     type: "website",
-    locale: "es_CO",
+    locale: "en_US",
     title,
     description: me.tagline,
-    siteName: `${me.name} · Portafolio`,
+    siteName: `${me.name} · Portfolio`,
   },
   twitter: {
     card: "summary_large_image",
@@ -60,7 +60,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable}`}>
       <body className="min-h-screen font-sans">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           <LanguageProvider>{children}</LanguageProvider>
